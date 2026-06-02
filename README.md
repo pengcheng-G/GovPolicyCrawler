@@ -1,4 +1,4 @@
-# PolicyHarvester · 政策数据爬取工具
+# GovPolicyCrawler · 政策数据爬取工具
 
 > 从政府网站批量抓取政策标题、发布时间、正文内容，用于经济政策分析与研究
 
@@ -42,3 +42,43 @@
 ```bash
 git clone https://github.com/你的用户名/PolicyHarvester.git
 cd PolicyHarvester
+```
+### 2. 安装依赖
+```bash
+pip install -r requirements.txt
+```
+### 3. 准备数据
+在项目根目录放置 web.csv 文件。
+
+### 4. 运行脚本
+bash
+python suzhou_shanghai.py
+
+### 5. 查看结果
+输出文件位于 /content/extracted_urls.csv
+
+### 📦 依赖库
+requests — HTTP 请求
+beautifulsoup4 — HTML 解析
+csv — 数据处理（Python 内置）
+
+### 🧩 自定义配置
+如需适配不同政府网站的 HTML 结构，可修改脚本中的选择器：
+```bash
+# 默认提取 <publishtime> 标签
+published_date = soup.find("publishtime")
+
+# 可改为其他常见标签，如：
+# published_date = soup.find("meta", {"name": "pubdate"})
+# published_date = soup.find("span", {"class": "time"})
+```
+### ⚠️ 注意事项
+请遵守目标网站的 robots.txt 规则
+建议设置合理的请求间隔，避免给服务器造成压力
+抓取的数据仅限个人研究使用，勿用于商业用途
+
+### 🤝 贡献
+欢迎提交 Issue 和 Pull Request！
+
+### 🙏 致谢
+感谢 OpenAI Codex for Open Source 计划提供的支持。
